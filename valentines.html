@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michelle's Valentine Proposal</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #ffe6f2;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 600px;
+        }
+
+        h1 {
+            color: #ff69b4;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .button-wrapper {
+            position: relative;
+            min-height: 100px;
+            margin-top: 2rem;
+        }
+
+        button {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            position: absolute;
+        }
+
+        #yesButton {
+            background: #ff69b4;
+            color: white;
+            position: static;
+        }
+
+        #yesButton:hover {
+            transform: scale(1.1);
+            background: #ff1493;
+        }
+
+        #noButton {
+            background: #e0e0e0;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+
+        .accepted-message {
+            display: none;
+            animation: fadeIn 1s ease;
+        }
+
+        .heart-animation {
+            animation: pulse 1.5s infinite;
+            font-size: 3rem;
+            margin-top: 2rem;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="proposal-content">
+            <h1>Baby, will you be my Valentine? 💖</h1>
+            <div class="button-wrapper">
+                <button id="yesButton" onclick="acceptProposal()">YES</button>
+                <button id="noButton" onmouseenter="dodgeButton()" onclick="dodgeButton()">NO</button>
+            </div>
+        </div>
+        
+        <div class="accepted-message">
+            <h2>Yay! You just made my heart skip a beat! 🥰</h2>
+            <p>Let's make this Valentine's Day unforgettable!</p>
+            <div class="heart-animation">💖</div>
+        </div>
+    </div>
+
+    <script>
+        function dodgeButton() {
+            const noButton = document.getElementById('noButton');
+            noButton.style.left = `${Math.random() * 80}%`;
+            noButton.style.top = `${Math.random() * 80}%`;
+        }
+
+        function acceptProposal() {
+            document.querySelector('.proposal-content').style.display = 'none';
+            document.querySelector('.accepted-message').style.display = 'block';
+            document.body.style.animation = 'fadeIn 1s ease';
+        }
+    </script>
+</body>
+</html>
